@@ -27,3 +27,4 @@ Además, en Laravel cumple los estándares: [PSR-4](http://www.php-fig.org/psr/p
 =======
 Además, en Laravel cumple los estándares: [PSR-4](http://www.php-fig.org/psr/psr-4/) para la carga automática de clases a partir de su ruta de archivos, y [PSR-12](https://www.php-fig.org/psr/psr-12/) como guía de estilo del código fuente.
 >>>>>>> 504cc26f8c5dce9af4f47089a33e54236c231118
+#probando github
