@@ -74,7 +74,7 @@ Una vez completados todos los pasos, la estructura quedará así:
 
 ```.
 └── laravel
-    ├── app
+    ├── marcapersonalfp
     └── laradock
 ```
 
@@ -113,7 +113,7 @@ cd laradock && cp .env.example .env && cd ..
 - Accedemos a la carpeta en la que vayamos a almacenar nuestros proyectos Laravel. En nuestro caso:
 
 ```
-cd Documentos/laravel/
+cd ~/Documentos/laravel/
 ```
 
 - Generamos el proyecto _marcapersonalfp_ con el siguiente comando:
@@ -125,6 +125,14 @@ docker run -it --rm --name php-cli \
 ```
 
 **atención** _Si quisiéramos generar más aplicaciones Laravel, únicamente deberíamos cambiar el nombre del proyecto, que se encuentra al final de la orden, después de `laravel/laravel`._
+
+### Arrancar los contenedores necesarios:
+
+Desde el directorio de _Laradock_ ejecutaremos el siguiente comando para arrancar los contenedores:
+
+```
+docker compose up -d nginx mariadb php-fpm phpmyadmin workspace
+```
 
 ### Crear la base de datos
 
@@ -177,18 +185,12 @@ Para cada aplicación, generaremos un servidor virtual. En este caso, nuestro se
 4. Reiniciaremos el contenedor de NGINX desde el directorio `laradock`
 
     ```
-    docker-compose restart nginx
+    docker compose restart nginx
     ```
 
 ### (Re)arrancar los contenedores
 
-Los comandos de `docker-compose` se lanzan desde la carpeta `laradock`.
-
-### Arrancar los contenedores necesarios:
-
-```
-docker compose up -d nginx mariadb php-fpm phpmyadmin workspace
-```
+Los comandos de `docker compose` se lanzan desde la carpeta `laradock`.
 
 La primera vez que arrancamos los contenedores tarda mucho tiempo, ya que _Docker_ debe descargar las imágenes que le son necesarias.
 
