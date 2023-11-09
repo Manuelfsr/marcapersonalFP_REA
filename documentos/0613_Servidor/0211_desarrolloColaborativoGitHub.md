@@ -57,7 +57,7 @@ A continuación, debemos descargar las librerías necesarias para cualquier proy
 
 ```
 cd laradock
-docker-compose up -d nginx mariadb phpmyadmin workspace
+docker compose up -d nginx mariadb phpmyadmin workspace
 
 cd ../marcapersonalfp
 composer install
@@ -104,7 +104,7 @@ php artisan key:generate
 - Reiniciamos el contenedor de NGINX
 
     ```
-    docker-compose restart nginx
+    docker compose restart nginx
     ```
 
 ### MariaDB

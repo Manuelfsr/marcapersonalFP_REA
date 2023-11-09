@@ -82,9 +82,9 @@ Route::any('foo', function()
 Si queremos añadir parámetros a una ruta simplemente los tenemos que indicar entre llaves `{}` a continuación de la ruta, de la forma:
 
 ```
-Route::get('saluda/{**nombre**}', function(**$nombre**)
+Route::get('saluda/{nombre}', function($nombre)
 {
-    return '¡Hola ' . **$nombre** . '!';
+    return '¡Hola ' . $nombre . '!';
 });
 ```
 
@@ -93,7 +93,7 @@ En este caso estamos definiendo la ruta `/saluda/{nombre}`, donde _nombre_ es re
 Para indicar que un parámetro es opcional añadiremos el símbolo `?` al final (y en este caso no daría error si no se realiza la petición con dicho parámetro):
 
 ```
-Route::get('saluda/{nombre**?**}', function($nombre = null)
+Route::get('saluda/{nombre?}', function($nombre = null)
 {
     return '¡Hola ' . $nombre . '!';
 });
@@ -102,7 +102,7 @@ Route::get('saluda/{nombre**?**}', function($nombre = null)
 También podemos poner algún valor por defecto.
 
 ```
-Route::get('saluda/{**nombre?**}', function(**$nombre = 'colega'**)
+Route::get('saluda/{nombre?}', function($nombre = 'colega')
 {
     return '¡Hola ' . $nombre . '!';
 });
@@ -115,7 +115,7 @@ Route::get('saluda/{nombre}', function($nombre)
 {
     return '¡Hola ' . $nombre . '!';
 })
-**->where('nombre', '[A-Za-z]+')**;
+->where('nombre', '[A-Za-z]+');
 ```
 
 ```
@@ -123,7 +123,7 @@ Route::get('user/{id}', function($id)
 {
     //
 })
-**->where('id', '[0-9]+')**;
+->where('id', '[0-9]+');
 ```
 
 Si hubiera varios parámetros podríamos validarlos usando un array:
@@ -133,7 +133,7 @@ Route::get('user/{id}/{name}', function($id, $name)
 {
     //
 })
-**->where(array('id' => '[0-9]+', 'name' => '[A-Za-z]+'))**
+->where(array('id' => '[0-9]+', 'name' => '[A-Za-z]+'))
 ```
 
 ## Agrupar rutas
@@ -184,7 +184,7 @@ Con este método nos aseguraremos que la _URL_ sea válida y además se le añad
 
 ## Ejercicios:
 
-A estas alturas ya tendríamos que ser capaces de añadir contenido estático a nuestra web, simplemente modificando el fichero de rutas y devolviendo todo el contenido desde ese ficehro. Para evitar tener que mantener un inmenso fichero `routes/web.php` con todo el código mezclado en el mismo archivo, en las siguientes secciones separaremos el código de las vistas y más adelante añadiremos los controladores.
+A estas alturas ya tendríamos que ser capaces de añadir contenido estático a nuestra web, simplemente modificando el fichero de rutas y devolviendo todo el contenido desde ese fichero. Para evitar tener que mantener un inmenso fichero `routes/web.php` con todo el código mezclado en el mismo archivo, en las siguientes secciones separaremos el código de las vistas y más adelante añadiremos los controladores.
 
 En este ejercicio vamos a definir las rutas principales que va a tener nuestro sitio web.
 
@@ -197,10 +197,10 @@ Método | Ruta | Texto a mostrar
 GET | `/` | Pantalla principal
 GET | `login` | Login usuario
 GET | `logout` | Logout usuario
-GET | `proyectos` | Listado proyectos
-GET | `proyectos/show/{id}` | Vista detalle proyecto {id}
-GET | `proyectos/create` | Añadir proyecto
-GET | `proyectos/edit/{id}` |Modificar proyecto {id}
+GET | `catalog` | Listado proyectos
+GET | `catalog/show/{id}` | Vista detalle proyecto {id}
+GET | `catalog/create` | Añadir proyecto
+GET | `catalog/edit/{id}` | Modificar proyecto {id}
 GET | `perfil/{id}` | Visualizar el currículo de {id}
 
 Debemos asegurarnos de que todos los parámetros `{id}` sean números naturales.
